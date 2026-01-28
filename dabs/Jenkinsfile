@@ -1,8 +1,7 @@
 // ======================== SIMPLE DATABRICKS BUNDLE PIPELINE ========================
 pipeline {
-    agent {
-        label 'master'  // Change to your Jenkins agent label
-    }
+    agent any
+
     
     options {
         timeout(time: 2, unit: 'HOURS')
