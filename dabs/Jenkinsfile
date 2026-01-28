@@ -25,8 +25,8 @@ pipeline {
     environment {
         // Databricks Configuration
         DATABRICKS_HOST = 'https://adb-7405617499680447.7.azuredatabricks.net/'  // Replace with your workspace URL
-        DATABRICKS_CLIENT_ID = credentials('databricks-client-id')
-        DATABRICKS_CLIENT_SECRET = credentials('databricks-client-secret')
+        DATABRICKS_CLIENT_ID = "e1720236-6ef3-47c5-b73e-700d4a171681"
+        DATABRICKS_CLIENT_SECRET = "dosed0e6ab7e4b30bb5ba34f5b3971c88456"
         
         // Add user's local bin to PATH for databricks CLI
         PATH = "${env.HOME}/.local/bin:${env.PATH}"
