@@ -1,16 +1,34 @@
 bundle:
-  name: multi-pipeline-bundle
- 
+  name: "life-dbx-datawarehouse"
+
 include:
-  - pipelines/*.yml  
- 
+  - dbx/**/*.yml
+  - variables/prod/*.yml
+  - variables/common/*.yml
+
+permissions:
+  - level: CAN_VIEW
+    group_name: "Life-DBX-Workspace-Readers"
+
+variables:
+  DATABRICKS_CLIENT_ID: {}
+  notebookPath:
+    description: 'Notebook Path'
+    default: '/Workspace/dbx/files/dbx/notebooks'
 
 targets:
-  dev:
-    default: true
-    mode: 'production'
+  prod:
+    mode: production
     workspace:
-      root_path: "https://adb-7405617499680447.7.azuredatabricks.net/" 
-    run_as:
-      service_principal_name: "e1720236-6ef3-47c5-b73e-700d4a171681"    
-   
+      root_path: "/dbx"
+    sync:
+      include:
+        - dbx
+      exclude:
+        - "Jenkinsfile"
+        - "variables/**"
+        - "backup/**"
+        - ".git/**"
+        - "databricks.yml"
+        - "README.md"
+        - "*.md"
