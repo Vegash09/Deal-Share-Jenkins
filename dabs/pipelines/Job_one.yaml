@@ -1,0 +1,17 @@
+resources:
+  jobs:
+    Job:
+      name: Job
+      tasks:
+        - task_key: Task_one
+          notebook_task:
+            notebook_path: /Workspace/Shared/Deal-Share-Jenkins/dabs/notebooks/NoteBook-One
+            source: WORKSPACE
+          environment_key: Task_one_environment
+      queue:
+        enabled: true
+      environments:
+        - environment_key: Task_one_environment
+          spec:
+            environment_version: "4"
+      performance_target: PERFORMANCE_OPTIMIZED

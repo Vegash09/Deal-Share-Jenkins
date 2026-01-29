@@ -1,27 +1,16 @@
-# Databricks Asset Bundle configuration, more info here: https://docs.databricks.com/en/dev-tools/bundles/settings.html
 bundle:
-  name: "dabs"
-
+  name: multi-pipeline-bundle
+ 
 include:
-  - resources/*.yml
-  - resources/*/*.yml
+  - pipelines/*.yml  
+ 
 
 targets:
-  # The 'dev' target, for development purposes. This target is the default.
   dev:
-    mode: development
     default: true
+    mode: 'production'
     workspace:
-      host: https://adb-7405617499680447.7.azuredatabricks.net
-
-  # The 'prod' target, used for production deployment.
-  prod:
-    mode: production
-    workspace:
-      host: https://adb-7405617499680447.7.azuredatabricks.net
-      # We always use /Users/sce21cs116@sairamtap.edu.in for all resources to make sure we only have a single copy.
-      root_path: /Users/sce21cs116@sairamtap.edu.in/.bundle/${bundle.name}/${bundle.target}
+      root_path: "https://adb-7405617499680447.7.azuredatabricks.net/" 
     run_as:
-      # This runs as sce21cs116@sairamtap.edu.in in production. We could also use a service principal here,
-      # see https://docs.databricks.com/dev-tools/bundles/permissions.html.
-      user_name: sce21cs116@sairamtap.edu.in
+      service_principal_name: "e1720236-6ef3-47c5-b73e-700d4a171681"    
+   
